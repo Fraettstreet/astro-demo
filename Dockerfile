@@ -1,10 +1,2 @@
-FROM node:18-alpine
-ENV NODE_ENV=production
-
-COPY ["package.json", "package-lock.json*", "./"]
-
-RUN npm install --production
-
-COPY . .
-
-CMD [ "node", "server.js" ]
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
