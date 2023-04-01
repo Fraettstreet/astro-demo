@@ -1,2 +1,10 @@
-FROM nginx:alpine
-COPY . /usr/share/nginx/html/astro-demo/public
+FROM node:18-alpine
+ENV NODE_ENV=production
+
+COPY ["package.json", "package-lock.json*", "./"]
+
+RUN npm install --production
+
+COPY . .
+
+CMD [ "node", "server.js" ]
